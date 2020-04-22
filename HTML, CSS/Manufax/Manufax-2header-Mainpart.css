@@ -1,0 +1,162 @@
+.header-Mainpart{
+    position: relative;
+    background-color: black;
+    width:100%;
+    
+}
+.Mainpart-Total{
+    background-color: rgba(0, 0, 0, .1);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 25px 30px;
+}
+.Mainpart-Pic{
+    width: 100%;
+    height: 880px;
+    filter: brightness(.5);
+    opacity: none;
+    object-fit: none;
+}
+.Mainpart-MenuBlock{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: auto;
+
+}
+.header-Mainpart a{
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    padding: 20px;
+    transition: .5s;
+}
+.header-Mainpart a:first-child{
+    color: #2ac5f4;
+}
+.header-Mainpart a:hover{
+    color: #2ac5f4;
+}
+.header-Mainpart button{
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+}
+.header-Mainpart button:hover{
+    color: #2ac5f4;
+    transition: .5s;
+    cursor: pointer;
+}
+.header-Mainpart .Mainpart-Description{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 180px;
+    color: white;
+}
+.header-Mainpart .Mainpart-Description h1{
+    margin-top: 50px;
+    /* padding: 18px; */
+}
+.header-Mainpart .Mainpart-Description h3{
+    
+    padding: 10px;
+    text-align: center;
+}
+.header-Mainpart .Mainpart-Description a{
+    color: white;
+    background-color: #2ac5f4;
+    border-radius: 2%;
+    padding: 23px 40px;
+    margin-top: 40px;
+}
+.header-Mainpart .Mainpart-Description a:hover{
+    color: white;
+    background-color: #000;
+}
+.Mainpart-MenuBlock{
+    flex-wrap: wrap;
+
+}
+.Mainpart-Logo{
+    width: 100%;
+    text-align: center;
+}
+.Mainpart-MenuNav{
+    width: 50%;
+}
+.Mainpart-MenuNav nav{
+    display: none;
+}
+.Mainpart-Search{
+    width: 50%;
+    text-align: right;
+}
+.fa-bars{
+    color: white;
+    font-size: 20px;
+}
+#menu-control{
+    position: absolute;
+    left: -100px;
+}
+
+@media screen and (min-width:768px){
+    .header-Mainpart .Mainpart-Description h1{
+        font-size: 70px;
+        padding-top: 30px;
+    }
+    .header-Mainpart .Mainpart-Description h3{
+        font-size: 23px;
+        padding: 8px;
+    }
+    .header-Mainpart .Mainpart-Logo{
+        width: 50%;
+        text-align: left;
+    }
+    .header-Mainpart .Mainpart-MenuNav{
+        order: 1;
+        margin-top: 20px;
+        width: 100%;
+        display: flex;
+    }
+    .fa-bars{
+        display: none;
+    }
+    .header-Mainpart .Mainpart-MenuBlock {
+        display: flex;
+    }
+    .header-Mainpart .Mainpart-MenuNav nav{
+        display: block;
+        width: 100%;
+        text-align: center;
+
+    }
+}
+@media screen and (min-width:1200px){
+    .Mainpart-MenuBlock{
+        padding: 0 150px;
+    }
+    .header-Mainpart .Mainpart-Description h1{
+        font-size: 120px;
+        padding-top: 30px;
+    }
+    .header-Mainpart .Mainpart-Description h3{
+        font-size: 30px;
+        padding-top: 5px;
+    }
+    .header-Mainpart .Mainpart-Logo{
+        width: 25%;
+    }
+    .header-Mainpart .Mainpart-MenuNav{
+        width: 60%;
+    }
+    .header-Mainpart .Mainpart-Search{
+        width: 10%;
+        order: 2;
+    }
+} 

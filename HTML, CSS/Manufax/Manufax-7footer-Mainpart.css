@@ -1,0 +1,95 @@
+.footer-Mainpart{
+    background-color: #333;
+    padding: 0 15px;
+    padding-top: 70px;
+}
+.footer-Mainpart .Mainpart-Item a{
+    text-decoration: none;
+    color: #2ac5f4;
+}
+.footer-Mainpart .Mainpart-Item .Description{
+    line-height: 1.5;
+    padding-bottom: 40px;
+}
+.footer-Mainpart .Mainpart-Item .Description .Logo{
+    text-align: start;
+    padding-bottom: 10px;
+}
+.footer-Mainpart .Mainpart-Item .Description p{
+    font-size: 16px;
+    color: #666;
+}
+.footer-Mainpart .Mainpart-Item .Navigation h4 , .RecentComments h4 , .Contacts h4{
+    font-size: 18px;
+    color: #fff;
+    margin: 30px 0;
+}
+.footer-Mainpart .Mainpart-Item .Navigation ul li .Home{
+    color: #fff;
+}
+.footer-Mainpart .Mainpart-Item .Navigation ul li{
+    line-height: 2;
+    font-size: 15px;
+    padding-bottom: 10px;
+}
+.footer-Mainpart .Mainpart-Item .Navigation ul li a:hover{
+    color: #fff;
+    transition: .5s;
+}
+.footer-Mainpart .Mainpart-Item .RecentComments{
+    line-height: 1.5;
+}
+.footer-Mainpart .Mainpart-Item .RecentComments a{
+    font-size: 14px;
+    color: #fff; 
+}
+.footer-Mainpart .Mainpart-Item .RecentComments a:hover{
+    color: #2ac5f4;
+    transition: .5s;
+}
+.footer-Mainpart .Mainpart-Item .RecentComments .RecentComments-Pastedby{
+    display: flex;
+    font-size: 10px;
+    padding-bottom: 15px;
+}
+.footer-Mainpart .Mainpart-Item .RecentComments .RecentComments-Pastedby p{
+    display: inline;
+}
+.footer-Mainpart .Mainpart-Item .RecentComments .RecentComments-Pastedby *{
+    color: #666;
+}
+.footer-Mainpart .Mainpart-Item .Contacts{
+    font-size: 15px;
+    color: #666;
+    padding-bottom: 70px;
+    line-height: 2;
+}
+@media screen and (min-width:768px){
+    .footer-Mainpart{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .footer-Mainpart .Mainpart-Item{
+        width: 45%;
+    }
+    .footer-Mainpart .Mainpart-Item .Description p, .footer-Mainpart .Mainpart-Item .RecentComments a p{
+        /* width: 330px; */
+    }
+    .footer-Mainpart .Mainpart-Item .Navigation ul li{
+        line-height: 1.7;
+    }
+    .footer-Mainpart .Mainpart-Item .Contacts h4{
+        margin: 24px 0;
+    }
+}
+@media screen and (min-width:1024px){
+    .footer-Mainpart{
+        display: flex;
+        margin: auto;
+        justify-content: center;
+    }
+    .footer-Mainpart .Mainpart-Item{
+        width: 16.6666666666667%;
+    }
+}

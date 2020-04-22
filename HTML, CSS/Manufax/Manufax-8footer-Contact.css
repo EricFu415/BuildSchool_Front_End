@@ -1,0 +1,32 @@
+.footer-Contact{
+    font-size: 14px;
+    background-color: hsl(60, 3%, 14%);
+    color: #888;
+    width: 100%;
+    /* margin: auto; */
+    padding: 15px 0 15px 0;
+    line-height: 2;
+    text-align: center;
+}
+.footer-Contact a{
+    text-decoration: none;
+    color: #2ac5ff;
+}
+.footer-Contact a:hover{
+    color: #888;
+    transition: .3s;
+}
+.footer-Contact i{
+    color: white;
+}
+.footer-Contact i:hover{
+    color: #2ac5f4;
+}
+@media screen and (min-width:768px){
+    .footer-Contact{
+        line-height: 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+}

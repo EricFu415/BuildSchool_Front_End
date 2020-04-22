@@ -1,0 +1,73 @@
+.sixItem{
+    display: flex;
+    width: 90%;
+    margin: auto;
+}
+.sixItem .item{
+    background-color: white;
+    width: 250px;
+    height: 250px;
+    margin: 10px;
+    padding: 10px;
+}
+.sixItem .item img{
+    width: 100%;
+    /* position: relative; */
+}
+
+.sixItem p{
+    font-size: 25px;
+}
+.sixItem .item:hover{
+    box-shadow: 5px 5px 5px 5px #888888;
+    color: yellow;
+}
+
+.sixItem .item1{
+    position: relative;
+}
+.sixItem .item1 p{
+    position: absolute;
+    bottom: 65px;
+    left: 70px;
+}
+.sixItem .item2{
+    position: relative;
+}
+.sixItem .item2 p{
+    position: absolute;
+    bottom: 65px;
+    left: 90px;
+}
+.sixItem .item3{
+    position: relative;
+}
+.sixItem .item3 p{
+    position: absolute;
+    bottom: 65px;
+    left: 110px;
+}
+.sixItem .item4{
+    position: relative;
+}
+.sixItem .item4 p{
+    position: absolute;
+    bottom: 65px;
+    left: 70px;
+}
+.sixItem .item5{
+    position: relative;
+}
+.sixItem .item5 p{
+    position: absolute;
+    bottom: 65px;
+    left: 100px;
+}
+.sixItem .item6{
+    position: relative;
+}
+.sixItem .item6 p{
+    position: absolute;
+    bottom: 65px;
+    left: 105px;
+}

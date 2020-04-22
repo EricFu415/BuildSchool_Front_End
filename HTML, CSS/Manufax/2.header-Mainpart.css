@@ -1,0 +1,90 @@
+/* 2 */
+.header-Mainpart{
+    position: relative;
+    background-color: black;
+    width:100%;
+}
+.header-Mainpart .Mainpart-Pic img{
+    width: 100%;
+    opacity: .5;
+    background-color: black;
+    vertical-align: top;
+    overflow: hidden;
+    /* text-align: center; */
+    /* brightness是調整亮度 */
+    /* filter:brightness(.5); */
+    position: relative;
+}
+.header-Mainpart .Mainpart-Total{
+    width: 100%;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+}
+.header-Mainpart .Mainpart-Total .Mainpart-MenuBlock{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* position: absolute; */
+}
+.header-Mainpart .Mainpart-Total .Mainpart-MenuBlock nav a{
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    padding: 0 10px;
+}
+.header-Mainpart .Mainpart-Total .Mainpart-MenuBlock nav a:first-child{
+    color: rgba(0, 153, 255, 0.945);
+}
+.header-Mainpart .Mainpart-Total .Mainpart-MenuBlock nav a:hover,
+.header-Mainpart .Mainpart-Total .Mainpart-MenuBlock .Mainpart-Search i:hover{
+    color: rgba(0, 153, 255, 0.945);
+    transition: .5s;
+}
+.header-Mainpart .Mainpart-Total .Mainpart-MenuBlock .Mainpart-Search{
+    color: white;
+}
+/* .header-Mainpart .Mainpart-MenuBlock img{
+    position: absolute;
+    top: 10px;
+    left:10px;
+} */
+/* .header-Mainpart{
+    background-image: url("20200317Manufax/asset 3.png");
+} */
+.header-Mainpart .Mainpart-Total .Mainpart-title,
+.header-Mainpart .Mainpart-Total .Mainpart-ReadMore{
+    width: 100%;
+    margin-top: 250px;
+    margin-bottom: 25px;
+}
+.header-Mainpart .Mainpart-Total .Mainpart-title h1{
+    color: white;
+    font-size: 100px;
+    text-align: center;
+}
+.header-Mainpart .Mainpart-Total .Mainpart-Description h3{
+    color: white;
+    text-align: center;
+    font-size: 25px;
+}
+.header-Mainpart .Mainpart-Total .Mainpart-ReadMore{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 45px;
+    /* margin-bottom: 45px; */
+}
+.header-Mainpart .Mainpart-Total .Mainpart-ReadMore a{
+    text-decoration: none;
+    color: white;
+    background-color: rgba(0, 153, 255, 0.945);
+    padding: 23px 45px;
+    
+    border-radius: 5px;
+    
+}
+.header-Mainpart .Mainpart-Total .Mainpart-ReadMore a:hover{
+    background-color: black;
+}

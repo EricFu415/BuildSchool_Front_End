@@ -1,0 +1,96 @@
+.Services{
+    text-align: center;
+}
+.Services .service-title h1{
+    font-size: 28px;
+    margin-top: 100px;
+    margin-bottom: 35px;
+    position: relative;
+}
+.Services .service-title h1::before{
+    content: '';
+    border-top: 2px solid #2ac5f4;
+    position: absolute;
+    top: -30px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 60px;
+}
+.Services .service-item i{
+    font-size: 40px;
+    color: #2ac5f4;
+}
+.Services .service-items h3{
+    font-size: 17px;
+    padding: 20px 0 15px 0;
+}
+.Services .service-items p{
+    font-size: 13px;
+    padding-bottom: 50px;
+    padding: 0 15px;
+    margin-bottom: 35px;
+    color: #999;
+    line-height: 1.5;
+}
+@media screen and (min-width:768px){
+    .Services .service-items{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .Services .service-item{
+        text-align:start;
+        display: flex;
+        margin: 20px 2.60416666666667%;
+        width: 28.125%;
+    }
+    .Services .service-item i{
+        padding: 0px;
+    }
+    .Services .service-item h3{
+        padding: 20px 15px 15px;
+    }
+}
+@media screen and (min-width:992px){
+    .Services .service-title h1{
+        margin-bottom: 15px;
+    }
+    .Services .service-item i{
+        padding: 0px;
+        color: #2ac5f4;
+    }
+    .Services .service-item h3{
+        padding: 20px 15px 15px;
+    }
+    .Services .service-item p{
+        padding: 0px 15px;
+        color: #777;
+    }
+}
+@media screen and (min-width:1025px){
+    .Services .service-items{
+        /* padding: 40px;
+        margin: 0px 70px; */
+    }
+    .Services .service-item i{
+        font-size: 70px;
+    }
+    .Services .service-item h3{
+        font-size: 20px;
+        line-height: 1.8;
+    }
+    .Services .service-item p{
+        font-size: 18px;
+    }
+}
+@media screen and (min-width:1400px){
+    .Services .service-title h1{
+        margin-bottom: 0px;
+    }
+    .Services .service-items{
+        width: 75%;
+        padding: 40px;
+        margin: auto;
+    }
+}

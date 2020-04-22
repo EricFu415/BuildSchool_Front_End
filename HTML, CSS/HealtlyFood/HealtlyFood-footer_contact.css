@@ -1,0 +1,19 @@
+.footer_contact{
+    background-color: #eee;
+    color: #111;
+    padding: 10px ;
+    
+}
+.item{
+    width: 600px;
+    display: flex;
+    
+    justify-content: center;
+}
+.item a{
+    text-decoration: none;
+    color: #111;
+}
+.item a:hover{
+    color: #111;
+}

@@ -1,0 +1,66 @@
+.History{
+    padding: 70px 15px;
+    background-color: #eee;
+}
+.History .history .history-pic img{
+    width: 100%;
+}
+.History .history .history-content h1{
+    margin: 100px 0 35px 0;
+    position: relative;
+}
+.History .history .history-content h1::before{
+    content: '';
+    border-top: 2px solid #2ac5f4;
+    position: absolute;
+    top:-35px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 55px;
+}
+.History .history .history-content h4{
+    font-size: 19px;
+    line-height: 1.7;
+    padding-bottom: 20px;
+    color: #333;
+}
+.History .history .history-content{
+    padding-right: 10px;
+}
+.History .history .history-content p{
+    font-size: 15x;
+    line-height: 1.7;
+    padding-bottom: 20px;
+    color: #888;
+    margin-bottom: 30px;
+}
+.History .history .history-content a{
+    text-decoration: none;
+    color: white;
+    background-color: #2ac5f4;
+    padding: 15px 40px;
+    border-radius: 5%;
+}
+@media screen and (min-width:992px){
+    .History .history{
+        display: flex;
+    }
+    .History .history .history-pic, .History .history-content{
+        width: 50%;
+    }
+    .History .history .history-pic{
+        order: 1;
+    }
+    .History .history .history-content h1{
+        margin: 50px 0 35px 0;
+        position: relative;
+    }
+}
+@media screen and (min-width:1400px){
+    .History .history{
+        width: 80%;
+        margin: auto;
+    }
+    
+}

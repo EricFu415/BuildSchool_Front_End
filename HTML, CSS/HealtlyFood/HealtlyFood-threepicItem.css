@@ -1,0 +1,57 @@
+.threepicItem{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 50px 0;
+}
+.threepicItem a{
+    font-size: 20px;
+    color: #fff;
+}
+.threepicItem a:hover{
+    font-size: 20px;
+    color: #000;
+    transition: .3s;
+}
+.threepicItem img{
+    width: 100%;
+}
+.threepicItem .content{
+    color: #fff;
+    font-size: 18px;
+}
+.threepicItem{
+    position: relative;
+}
+.threepicItem .best .content{
+    position: absolute;
+    bottom: 100px;
+    left: 420px;
+}
+.threepicItem .best .content h1{
+    padding-bottom: 25px;
+}
+.best{
+    margin: 0 30px 0 0;
+}
+.threepicItem .rush .rushitem{
+    margin-bottom: 28px;
+    position: relative;
+
+}
+.threepicItem .rush .item1 .content{
+    position: absolute;
+    bottom: 40px;
+    left: 30px;
+}
+.threepicItem .rush .item1 .content h2{
+    padding-bottom: 25px;
+}
+.threepicItem .rush .item2 .content{
+    position: absolute;
+    bottom: 90px;
+    left: 30px;
+}
+.threepicItem .rush .item2 .content p{
+    padding: 25px 0 40px 0;
+}

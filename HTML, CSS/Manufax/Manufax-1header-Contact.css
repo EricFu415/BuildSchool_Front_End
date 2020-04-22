@@ -1,0 +1,80 @@
+.header-Contact{
+    background-color: hsl(60, 3%, 14%);
+    color: white;
+    width: 100%;
+    margin: auto;
+    padding: 15px 0 25px 0;
+}
+.Contact-AddressPhone i{
+    color:hsl(202, 68%, 46%);
+}
+.Contact-Phone a {
+    text-decoration: none;
+    color: white;
+}
+.Contact-SocialMedia a:hover {
+    color: hsl(202, 68%, 46%);
+}
+.Contact-Address i::after,
+.Contact-Phone i::after {
+    content: '';
+    padding-left: 10px;
+}
+
+@media screen and (min-width:320px){
+    .Contact-Address, .Contact-Phone{
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+    }
+    .Contact-SocialMedia{
+        text-align: center;
+    }
+    .Contact-SocialMedia a{
+        text-align: center;
+        font-size: 18px;
+        color: white;
+        padding: 0 10px;
+    }
+}
+@media screen and (min-width:768px){
+    .Contact-AddressPhone{
+        display: flex;
+        justify-content:space-around;
+    }
+    .Contact-Address, .Contact-Phone{
+        display: flex;
+        margin: 20px 0;
+    }
+    .Contact-SocialMedia{
+        text-align: center;
+    }
+    .Contact-SocialMedia a{
+        text-align: center;
+        font-size: 18px;
+        color: white;
+        padding: 0 10px;
+    }
+}
+@media screen and (min-width:1024px){
+    .header-Contact {
+        padding: 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .Contact-AddressPhone{
+        display: flex;
+    }
+    .Contact-Address{
+        display: flex;
+        margin-right: 20px;
+    }
+    .Contact-Phone {
+        display: flex;
+    }
+    .Contact-SocialMedia a{
+        color: white;
+        padding: 0 10px;
+    }
+}

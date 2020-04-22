@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple Products</title>
+    <style>
+        .product_category{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            /* margin: auto; */
+
+        }
+        .product_category button{
+            font-size: 20px;
+            color: #bbb;
+            background-color: #333;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border: 2px solid #333;
+            border-radius: 5px;
+        }
+        .product_category button:hover{
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="product_category">
+        <button id="Mac" type="button" onclick="productMac">Mac</button>
+        <button id="iPad" type="button" onclick="productiPad">iPad</button>
+        <button id="iPhone" type="button" onclick="productiPhone">iPhone</button>
+        <button id="iWatch" type="button" onclick="productiWatch">iWatch</button>
+    </div>
+    <div class="Apple">
+        <img class="img-fluid" id="product-img" src="" alt="Apple Product">
+    </div>
+    <div class="appearance"></div>
+    <div class="specification"></div>
+    <script>
+        var products = {
+            Mac:{
+                appearance:[
+                    { colorName: '灰' , color: '#696969' , src:'pic/Mac_gray.jpg' },
+                    { colorName: '金' , color: '#FFE5B4' , src:'pic/Mac_gold.jpg' },
+                    { colorName: '銀' , color: '#C0C0C0' , src:'pic/Mac_silver.jpg' }
+                ],
+                specification:[
+                    { capacity: '256GB' , price: '$31,900' },
+                    { capacity: '512GB' , price: '$41,900' }
+                ],
+                other:{
+                    productName: Mac,
+                    showphoto: 'pic/Mac_gray.jpg',
+                }
+            },
+            iPad:{
+                appearance:[
+                    { colorName: '灰' , color: '#696969' , src:'pic/iPad_gray.png' },
+                    { colorName: '銀' , color: '#C0C0C0' , src:'pic/iPad_silver.png' }
+                ],
+                specification:[
+                    { capacity: '128GB' , price: '$25,900' },
+                    { capacity: '256GB' , price: '$29,400' },
+                    { capacity: '512GB' , price: '$36,400' },
+                    { capacity: '1TB' , price: '$43,400' }
+                ],
+                other:{
+                    productName: iPad,
+                    showphoto: 'pic/iPad_all.png',
+                }
+            },
+            iPhone:{
+                appearance:[
+                    { colorName: '綠' , color: '#7FFFD4' , src:'pic/iPhone_green.png' },
+                    { colorName: '黃' , color: '#FFFF00' , src:'pic/iPhone_yellow.png' },
+                    { colorName: '紫' , color: '#B399FF' , src:'pic/iPhone_purple.png' },
+                    { colorName: '紅' , color: '#E60000' , src:'pic/iPhone_red.png' }
+                ],
+                specification:[
+                    { capacity: '64GB' , price: '$24,900' },
+                    { capacity: '128GB' , price: '$26,900' },
+                    { capacity: '256GB' , price: '$30,400' }
+                ],
+                other:{
+                    productName: iPhone,
+                    showphoto: 'pic/iPhone_all.png',
+                }
+                
+            },
+            iWatch:{
+                appearance:[
+                    { colorName: '白' , color: '#ddd' , src:'pic/Watch_white.png' },
+                    { colorName: '金' , color: '#FFE5B4' , src:'pic/Watch_gold.png' },
+                    { colorName: '黑' , color: '#444' , src:'pic/Watch_black.png' }
+                ],
+                specification:[
+                    { capacity: '40mm' , price: '$13,400' },
+                    { capacity: '44mm' , price: '$14,400' }
+                ],
+                other:{
+                    productName: iWatch,
+                    showphoto: 'pic/Watch_white.png',
+                }
+            }
+        }
+
+        var macbtn = document.getElementById('Mac');
+        var ipadbtn = document.getElementById('iPad');
+        var iphonebtn = document.getElementById('iPhone');
+        var iwatchbtn = document.getElementById('iWatch');
+
+        var productimg = document.getElementById('product-img');
+        
+        var colorArea = 
+    </script>
+</body>
+</html>

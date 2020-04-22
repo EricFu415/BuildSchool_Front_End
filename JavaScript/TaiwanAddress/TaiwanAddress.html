@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Taiwan Address / Zip Code</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <h1 class="text-center mt-5 mb-3">Taiwan Address / Zip Code</h1>
+    
+    <div id="msg">
+        <table class="table table-striped mx-auto w-50 text-center table-hover">
+            <thead>
+                <tr>
+                    <td>城市</td>
+                    <td>區域</td>
+                    <td>郵遞區號</td>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    
+    <template id="templateRow">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </template>
+
+    <script>
+        var msg = document.getElementById(msg);
+
+        //創建一個空字串與空陣列
+        let AddressArray ='';
+        let newAddressList = [];
+
+        //當window讀取時，執行這個函式
+        window.onload = function(){
+
+            //創建一個變數，把跨瀏覽器撈到的資料物件塞進去。執行到此行會先去執行底下open跟send
+            let xhr = new XMLHttpRequest();
+
+            //當這個變數讀取時，執行這個函式
+            xhr.onload = function(){
+
+                //判斷目前讀取資料的狀態(readyState)與網頁連線的狀態(Status)是否符合我們的設定
+                //如果目前讀取資料的狀態 == 4，表示撈到資料，數據已經接收到了
+                //且網頁連線的狀態 == 200，表示資料正確回傳
+                if(xhr.readyState == 4 && xhr.status == 200){
+
+                    //把撈到的資料轉成JSON檔再紀錄進去AddressArray裡
+                    AddressArray = JSON.parse(this.responseText);
+                    
+                    //AddressArray是陣列，所以可以用forEach把項目一個一個取出
+                    AddressArray.forEach((item) =>{
+
+                        //要抓取的資料在item裡面，item裡我們要的第一個資料CityName是物件包著的其中一個屬性，所以要選取到他直接.就可以了；
+                        //第二個要抓的資料在AreaList裡面，但不是都是我們要的資料，所以先空白
+                        //因為裡面要包屬性跟值，所以要用大括號包起來
+                        let newObj = { City: item.CityName, Districs:[]};
+
+                        //因為AreaList是item裡其中一個屬性陣列，所以要先.選取到，再用forEach把陣列裡的項目一個一個取出
+                        item.AreaList.forEach((el) => {
+                            
+                            //我們要的資料長這樣 { City:"台北市", Districs: [{District:"中正區", ZipCode:"100"}] }
+                            //因為要把資料塞到上面的newObj裡面的Districs，在AreaList陣列裡面要取的是物件包著的其中幾個屬性，我要取到他就要直接用.
+                            newObj.Districs.push({Districs:el.AreaName, ZipCode:el.ZipCode})
+                        })
+
+                        //最後再把newObj塞進去的陣列裡
+                        newAddressList.push(newObj);
+                        // debugger;
+                    });
+                    //要取物件裡的值，所以是Object.value
+                    newAddressList.forEach((item) => {
+                        addTbody(Object.values(item));
+                    })
+                    
+                }
+                else{
+                    msg.textContent = '發生錯誤，HTTP response代碼：' + xhr.status;
+                }
+            }
+            xhr.open("Get","https://raw.githubusercontent.com/vivian990501/FileStorage/master/TaiwanAddress_original.json")
+            xhr.send();
+        }
+
+        //先規劃畫面要長怎麼樣，body > table，table裡面要放我要的資料
+
+        //table > thead、tbody > tr > th、td
+        //找爸爸 -> document.getElementByTag('body')[0];
+        //create -> document.createElement();
+
+        function addTbody(RowArray){
+            let TemplateRow = document.getElementById(templateRow);
+            for(let i = 0 ; i < RowArray[1].length ; i++){
+                let cloneContent = templateRow.content.cloneNode(true);
+                let tds = cloneContent.querySelectorAll('td');
+
+
+                tds[0].innerHTML = RowArray[0];
+                tds[1].innerHTML = RowArray[1][i].Districs;
+                tds[2].innerHTML = RowArray[1][i].ZipCode;
+
+                let tbody = document.getElementsByTagName('tbody')[0];
+                tbody.appendChild(cloneContent);
+            }
+        }
+
+
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

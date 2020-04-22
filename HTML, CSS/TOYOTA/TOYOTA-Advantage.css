@@ -1,0 +1,28 @@
+.Advantage{
+    padding: 30px 0;
+    width: 960px;
+    margin: auto;
+    text-align: center;
+}
+.Advantage h1{
+    font-size: 40px;
+    padding-bottom: 20px;
+}
+.Advantage nav{
+    margin-top: 20px;
+}
+.Advantage nav a{
+    font-size: 21px;
+    text-decoration: none;
+    color: #000;
+    border-bottom: 2.5px solid #ae0014;
+    border-top: 2.5px dashed #ddd;
+    border-left: 2.5px dashed #ddd;
+    border-right: 2.5px dashed #ddd;
+    padding: 3px 50px;
+    
+}
+.Advantage nav a:hover{
+    color: #fff;
+    background-color:  #ae0014;
+}

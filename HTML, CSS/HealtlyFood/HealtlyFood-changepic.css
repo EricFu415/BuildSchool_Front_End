@@ -1,0 +1,60 @@
+.changepic{
+    display: flex;
+    width: 100%;
+    margin-bottom: 50px;
+}
+.changepic .pic img{
+    width: 100%;
+}
+.changepic .pic{
+    width: 55%;
+}
+.changepic .Text{
+    display: flex;
+    width: 45%;
+    position: relative;
+}
+.changepic .Text .text{
+    padding: 20px;
+    /* justify-content: flex-start; */
+    /* align-items: center; */
+    /* line-height: 60px; */
+    margin: 130px 0 100px 50px;
+}
+.changepic .Text .text h1{
+    font-size: 100px;
+    font-weight: lighter;
+    line-height: 100px;
+    
+}
+.changepic .Text .text h2{
+    font-size: 60px;
+    color: yellow;
+    line-height: 80px;
+    padding:10px 0 40px 0;
+}
+.changepic .Text .text button{
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    padding: 18px 45px;
+    border: none;
+    border-radius: 5%;
+}
+.changepic .Text .text button:hover{
+    background-color: yellow;
+    color: black;
+}
+.changepic .Text .changepic{
+    position: relative;
+    display: flex;
+}
+.changepic .Text .changenum{
+    display: flex;
+    position: absolute;
+    bottom: 300px;
+    right: 80px;
+}
+.changepic .Text .changenum p{
+    padding: 0 10px;
+}

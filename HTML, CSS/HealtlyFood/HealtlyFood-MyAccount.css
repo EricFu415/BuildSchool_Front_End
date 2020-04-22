@@ -1,0 +1,18 @@
+.MyAccount{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+.MyAccount a{
+    text-decoration: none;
+    color: #000;
+    padding: 5px;
+    word-spacing:5px;
+}
+.MyAccount a:hover{
+    color: yellow;
+    transition: .5s;
+}

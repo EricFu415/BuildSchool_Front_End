@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Apple iPad Catalog</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://kit.fontawesome.com/437be08d6c.js" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+    <style>
+        body{
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        button{
+            width: 200px;
+            height: 100px;
+            background-color: #fff;
+            border-radius: 5px;
+            border: 1px solid rgb(199,197,197);
+            margin: 5px;
+        }
+    </style>
+</head>
+  <body>
+     <div class="container my-auto">
+         <div class="row">
+             <div class="col-12 col-xl-6 d-flex justify-content-center my-5">
+                 <img id="allphoto" src="pic/iPad-all.jfif" alt="iPadPhoto">
+             </div>
+             <div class="col-12 col-xl-6 mb-5">
+                <hr>
+                 <div class="perchase text-center">
+                    <h1><strong>購買iPad</strong></h1>
+                    <p>購買iPad可享免額外付費運送服務</p>
+                 </div>
+                 <hr>
+                 <div class="appearance text-center">
+                     <h4><strong>外觀</strong></h4>
+                     <div class="color d-flex justify-content-center">
+                         <!-- <button id="gray"><i class="fas fa-circle d-block mb-1" style ="color:#696969; font-size:25px;"></i>太空灰</button>
+                         <button id="silver"><i class="fas fa-circle d-block mb-1" style ="color:#C0C0C0; font-size:25px;"></i>銀色</button>
+                         <button id="gold"><i class="fas fa-circle d-block mb-1" style ="color:#FFE5B4; font-size:25px;"></i>金色</button> -->
+                         <button class="colorbtn" value="gray"><i class="fas fa-circle d-block mb-1" style ="color:#696969; font-size:25px;"></i>太空灰</button>
+                         <button class="colorbtn" value="silver"><i class="fas fa-circle d-block mb-1" style ="color:#C0C0C0; font-size:25px;"></i>銀色</button>
+                         <button class="colorbtn" value="gold"><i class="fas fa-circle d-block mb-1" style ="color:#FFE5B4; font-size:25px;"></i>金色</button>
+                     </div>
+                 </div>
+                 <hr>
+                 <div class="capacity text-center">
+                     <h4><strong>儲存裝置</strong></h4>
+                     <div class="capacitty_item d-flex justify-content-center">
+                        <button onclick="iPad32GB()"><p>32GB</p><p>NT$10,900起</p></button>
+                        <button onclick="iPad128GB()"><p>128GB</p><p>NT$13,900起</p></button>
+                    </div>
+                 </div>
+                 <hr>
+                 <div class="calculator d-flex justify-content-around">
+                     <p style="font-size:20px"><strong>價格試算</strong></p>
+                     <p id="productPrices">$0</p>
+                 </div>
+                 <hr>
+             </div>
+         </div>
+     </div>
+    <script>
+        var product = {
+            iPad: {
+                colors: [
+                    { color: 'gray', url:'ipad-gray.png' },
+                    { color: 'silver', url:'ipad-silver.png' },
+                    { color: 'gold', url:'ipad-gold.png' }
+                ],
+            }
+        };
+
+        var colorgray = document.querySelectorAll('.color .colorbtn');
+        colorgray.forEach((e)=>{
+            e.addEventListener('click',changephoto);
+        })
+
+        function changephoto(){
+            var photo = document.getElementById('allphoto');
+            photo.setAttribute('src', Geturl(this.value));    
+        }
+        function Geturl(key){
+            let result;
+            product.iPad.colors.forEach((i) => {
+                if (i.color == key) result = i.url;
+            })
+            return result;
+        }
+
+        var price = document.getElementById('productPrices')
+        function iPad32GB(){
+            price.innerHTML='$10,900元';
+        }
+        function iPad128GB(){
+            price.innerHTML='$13,900元';
+        }
+
+        // var colorgray = document.getElementById('gray');
+        // colorgray.onclick = 
+        // function changephoto(){
+        //     var photo = document.getElementById('allphoto');
+        //     photo.setAttribute('src', Geturl('gray'));
+        // }
+        // function Geturl(key){
+        //     let result;
+        //     product.iPad.colors.forEach((i) => {
+        //         if (i.color == key) result = i.url;
+        //     })
+        //     return result;
+        // }
+
+        // var colorsilver = document.getElementById('silver');
+        // colorsilver.onclick = 
+        // function changephoto(){
+        //     var photo = document.getElementById('allphoto');
+        //     photo.setAttribute('src', Geturl('silver'));
+        // }
+        // function Geturl(key){
+        //     let result;
+        //     product.iPad.colors.forEach((i) => {
+        //         if (i.color == key) result = i.url;
+        //     })
+        //     return result;
+        // }
+
+        // var colorgold = document.getElementById('gold');
+        // colorgold.onclick = 
+        // function changephoto(){
+        //     var photo = document.getElementById('allphoto');
+        //     photo.setAttribute('src', Geturl('gold'));
+        // }
+        // function Geturl(key){
+        //     let result;
+        //     product.iPad.colors.forEach((i) => {
+        //         if (i.color == key) result = i.url;
+        //     })
+        //     return result;
+        // }
+
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

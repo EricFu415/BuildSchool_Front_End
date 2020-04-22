@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Simple calculator</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .container{
+            max-width: 600px;
+        }
+        .Result p, .AllBtn .Btn button{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container my-5 border rounded-lg">
+        <div class="row">
+            <div class="col-12 bg-light py-2">
+                <div class="Result d-flex flex-column d-flex justify-content-around text-center font-weight-bold m-2">
+                    <p id="PastRecord">past record</p>
+                    <p id="ShowResult">0</p>
+                </div>
+                <div class="AllBtn d-flex flex-column">
+                    <div class="Btn d-flex justify-content-around">
+                        <button class="btn w-100 btn-success text-white m-1" data-type="reset">CE</button>
+                    </div>
+                    <div class="Btn d-flex justify-content-around">
+                        <button class="btn w-25 btn-warning text-white m-1" data-type="number">7</button>
+                        <button class="btn w-25 btn-warning text-white m-1" data-type="number">8</button>
+                        <button class="btn w-25 btn-warning text-white m-1" data-type="number">9</button>
+                        <button class="btn w-25 btn-dark m-1" data-type="calculation" value="/">÷</button>
+                    </div>
+                    <div class="Btn d-flex justify-content-around">
+                        <button class="btn w-25 btn-warning text-white m-1" data-type="number">4</button>
+                        <button class="btn w-25 btn-warning text-white m-1" data-type="number">5</button>
+                        <button class="btn w-25 btn-warning text-white m-1" data-type="number">6</button>
+                        <button class="btn w-25 btn-dark m-1" data-type="calculation" value="*">x</button>
+                    </div>
+                    <div class="Btn d-flex justify-content-around">
+                        <button class="btn w-25 btn-warning text-white m-1" data-type="number">1</button>
+                        <button class="btn w-25 btn-warning text-white m-1" data-type="number">2</button>
+                        <button class="btn w-25 btn-warning text-white m-1" data-type="number">3</button>
+                        <button class="btn w-25 btn-dark m-1" data-type="calculation" value="-">-</button>
+                    </div>
+                    <div class="Btn d-flex justify-content-around">
+                        <button class="btn w-25 btn-warning text-white m-1" data-type="number">0</button>
+                        <button class="btn w-25 btn-warning text-white m-1" data-type="point">.</button>
+                        <button class="btn w-25 btn-warning text-white m-1" data-type="equal">=</button>
+                        <button class="btn w-25 btn-dark m-1" data-type="calculation" value="+">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var allbtn = document.querySelectorAll('.AllBtn .Btn .btn');
+        
+        var pastRecord = document.getElementById('PastRecord');
+        var showResult = document.getElementById('ShowResult');
+        var stocker = '';
+
+        var pastRecordArray = [];
+        var showResultArray = [];
+
+        allbtn.forEach((i) => {
+            if (i.getAttribute('data-type') =='reset'){   //取得i裡的data-type元素
+                i.addEventListener('click', reset)
+            }
+            if (i.getAttribute('data-type') =='number'){
+                i.addEventListener('click', getNumber)
+            }
+            if (i.getAttribute('data-type') =='calculation'){
+                i.addEventListener('click', calculation)
+            }
+            if (i.getAttribute('data-type') =='point'){
+                i.addEventListener('click', getPoint)
+            }
+            if (i.getAttribute('data-type') =='equal'){
+                i.addEventListener('click', getAnswer)
+            }
+
+        });
+        
+        function reset(){
+            pastRecord.innerText = 'past record';
+            showResult.innerText = '0';
+            stocker = '';
+            pastRecordArray = [];
+            showResultArray = [];
+        }
+
+        function getNumber(){
+            if(showResult.innerText == '0' && this.innerText == '0'){
+                showResult.innerText = '0';
+            }
+            else if(showResult.innerText.includes('.')){
+                showResult.innerText += this.innerText;
+            }
+            else{
+                showResult.innerText = stocker;
+                stocker += this.innerText;
+                showResult.innerText = stocker;
+            }
+            pastRecord.innerText = pastRecordArray.join('') + showResult.innerText;
+        }
+
+        function calculation(){
+            showResultArray.push(showResult.innerText);
+            showResultArray.push(this.getAttribute('value'));
+            pastRecordArray = showResultArray ;
+            showResult.innerText = '0';
+            stocker = '';
+        }
+
+        function getPoint(){
+            if(showResult.innerText.length = 0){
+                showResult.innerText = '.';
+            }
+            else if(!showResult.innerText.includes('.')){
+                showResult.innerText += '.';
+            }
+        }
+
+        function getAnswer(){
+            showResultArray.push(showResult.innerText);
+            pastRecord.innerText += '=' + eval(pastRecord.innerText);
+            showResult.innerText = '0';
+            showResultArray = [];
+            pastRecordArray = [];
+            stocker = '';
+        }
+        
+
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

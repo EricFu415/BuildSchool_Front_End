@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+        <script src="../Modules/MyHelper.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
+</head>
+  <body>
+    <div class="container">
+        <!-- 宣告Canvas -->
+        <canvas id="lineChart"></canvas>
+    </div>
+    <script>
+        var ctx = document.getElementById("lineChart");
+        $.ajax({
+            type: "Get",
+            url:"https://raw.githubusercontent.com/apprunner/FileStorage/master/Temperature.json",
+            success: function(response){
+                let item = JSON.parse(response);
+            
+            
+            var chart = new Chart(ctx, {
+                // 指定圖表類型為line折線圖
+                type: "line",
+                data: {
+                    // 指定X軸Label名稱
+                    labels: item.Label,
+                    datasets: [{
+                        label: item.City,
+                        // 1~6月實際資料值
+                        data: item.Data,
+                        // 填充方式
+                        fill: false,
+                        backgroundColor: 'rgba(255,165,0,0.3)',
+                        borderColor: 'rgba(255,165,0)',
+                        // 資料點樣式
+                        pointStyle: 'circle',
+                        pointBackgroundColor: 'rgba(0,255,0)',
+                        // 資料點半徑大小
+                        pointRadius: 5,
+                        // 資料點hover時的半徑大小
+                        pointHoverRadius: 10,
+                    }]
+                },
+                options: {
+                    // 是否開啟Responsive響應式
+                    responsive: true,
+                    // title設定
+                    title: {
+                        display: true,
+                        fontSize: 26,
+                        text: '1-6月氣溫平均值'
+                    },
+                    // tooltips設定
+                    tooltips: {
+                        mode: 'point',
+                        intersect: true,
+                    },
+                    // legend圖例設定
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            fontColor: 'black',
+                        }
+                    }
+                }
+            });
+        }
+    })
+
+        
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

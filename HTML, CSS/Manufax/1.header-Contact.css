@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: 'Montserrat', sans-serif;
+}
+    /* 1 */
+.header-Contact {
+    height: 55px;
+    background-color: hsl(60, 3%, 14%);
+    color: white;
+    display: flex;
+    padding-left: 20px;
+    font-size: 14px;
+    justify-content: space-around;
+    align-items: center;
+}
+.Contact-AddressPhone{
+    display: flex;
+}
+.Contact-Address{
+    display: flex;
+    margin-right: 20px;
+}
+.Contact-Phone {
+    display: flex;
+}
+.Contact-Address i, .Contact-Phone i {
+    color: hsl(202, 68%, 46%);
+}
+.Contact-SocialMedia a {
+    color: white;
+    padding: 5px;
+}
+.Contact-Address i::after,
+.Contact-Phone i::after {
+    content: '';
+    padding-left: 10px;
+}
+.Contact-Phone a {
+    text-decoration: none;
+    color: white;
+}
+.Contact-SocialMedia a:hover {
+    color: hsl(202, 68%, 46%);
+}
+/* @media screen and (min-width:320px){
+    .header-Contact{
+        width: 100%;
+        height: 70px;
+        font-size: 1px;
+        padding-left: 0px;
+    }
+    .header-Contact .Contact-AddressPhone{
+        margin: auto;
+        width: 100%;     
+        display: flex;
+        flex-wrap: wrap;
+    }  
+} */
