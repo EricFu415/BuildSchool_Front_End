@@ -25,4 +25,5 @@
 .Advantage nav a:hover{
     color: #fff;
     background-color:  #ae0014;
+    transition: .5s;
 }
