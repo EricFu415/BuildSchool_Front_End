@@ -14,10 +14,10 @@
             margin: 0;
             padding: 0;
             list-style: none;
-            font-family: 'Noto Sans TC', sans-serif;            
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 25px;            
         }
         .container{
-            width: 100%;
             max-width: 500px;
             background-color: #aaddbb;
             border: 3px double #777;
@@ -25,14 +25,11 @@
         .Button{
             height: 50px;
         }
-        span{
-            margin-right: 10px;
-        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="row">
+    <div class="container my-5 w-100">
+        <div class="row my-3">
             <div class="col-12">
                 <div class="Button d-flex my-3">
                     <button class="btn btn-outline-dark flex-grow-1" id="start" onclick="Start()">開始</button>
@@ -41,11 +38,11 @@
                 </div>               
                 <div class="input-group my-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">猜答案</span>
+                        <span class="input-group-text px-3" id="basic-addon1">猜答案</span>
                     </div>
                     <input type="text" class="form-control" id="inputguess" placeholder="input four number" aria-label="Recipient's username" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                      <button class="button" onclick ="Guess()">猜!</button>
+                      <button class="button px-3" onclick ="Guess()">猜 !</button>
                     </div>
                 </div>
                 <div class="text">
@@ -139,14 +136,22 @@
             
             var li = document.createElement('li');
             var span = document.createElement('span');
+            var span0 = document.createElement('span');
             var span1 = document.createElement('span');
             span.innerHTML = CountofA+'A'+CountofB+'B';
+            span0.innerHTML = '　';
             span1.innerHTML = inputGuess.value;
             var div = document.getElementsByClassName('text')[0];
+
+
+            li.classList.add('text-center', 'm-3');
+            span.style.fontSize = '30px';
+            span1.style.fontSize = '30px';
 
             div.appendChild(ul);
             ul.appendChild(li);
             li.appendChild(span);
+            li.appendChild(span0);
             li.appendChild(span1);
 
             if(CountofA == 4){
