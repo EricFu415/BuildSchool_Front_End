@@ -28,7 +28,8 @@
     </style>
 </head>
 <body>
-    <div class="container my-5 w-100">
+    <h1 class="text-center mt-5" style="color: rgb(32, 32, 26)">1A2B 猜謎</h1>
+    <div class="container mt-3 w-100">
         <div class="row my-3">
             <div class="col-12">
                 <div class="Button d-flex my-3">
@@ -40,7 +41,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text px-3" id="basic-addon1">猜答案</span>
                     </div>
-                    <input type="text" class="form-control" id="inputguess" placeholder="input four number" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <input type="number" class="form-control" id="inputguess" maxlength="4" max="9876" min="0123" placeholder="input four number" aria-label="Recipient's username" aria-describedby="basic-addon2">
                     <div class="input-group-append">
                       <button class="button px-3" onclick ="Guess()">猜 !</button>
                     </div>
@@ -64,6 +65,10 @@
         var start = document.getElementById('start');
         var pastRecord = document.getElementById('pastrecord');
         function Start(){
+            AnswerArray = [];
+            Answer = "";
+            ul.innerHTML = '';
+            inputGuess.value = '';
             for(let i = 0; i < 4 ; i++){
                 AnswerArray[i] = Math.floor((Math.random()*10));
                 for(let j = 0 ; j < i ; j++){
@@ -74,7 +79,6 @@
                 }
                 Answer += AnswerArray[i];
             }
-            // alert(AnswerArray);
             
             //把另外三個按鈕開啟、鎖住開始按鈕
             for(let btn of button){
@@ -83,21 +87,29 @@
             start.setAttribute('disabled','disabled');
             pastRecord.innerText = '';
         }
-
+        
         function ReStart(){
             alert('Answer is '+ Answer);
             AnswerArray = [];
             Answer = "";
             ul.innerHTML = '';
             inputGuess.value = '';
-            Start();
+            Reset();
+        }
+
+        function Reset(){
+            var button = document.getElementsByClassName('button');
+            for(let btn of button){
+                btn.setAttribute('disabled','disabled');
+            }
+            var start = document.getElementById('start');
+            start.removeAttribute('disabled');
         }
 
         function ShowAnswer(){
             alert('Answer is '+Answer);
         }
 
-        // var pushGuess = document.getElementById('pushguess');
         var inputGuess = document.getElementById('inputguess');
         function Guess(){
             let CountofA = 0;
@@ -113,6 +125,10 @@
             }
             let distinctresult = InputGuessArray.filter(distinct);
             if(distinctresult.length < 4){
+                alert('錯誤');
+                return;
+            }
+            if(distinctresult.length > 4){
                 alert('錯誤');
                 return;
             }
@@ -132,8 +148,6 @@
             //交集長度-A 得出有多少個B
             CountofB = Number(Result.length-CountofA);
 
-
-            
             var li = document.createElement('li');
             var span = document.createElement('span');
             var span0 = document.createElement('span');
@@ -157,13 +171,12 @@
             if(CountofA == 4){
                 span.classList.add('bg-success','text-white');
                 alert('恭喜答對了！');
+                Reset();
             }
             else{
                 span.classList.add('bg-danger', 'text-white');
             }
             inputGuess.value = '';
-            // alert(CountofA+'A'+CountofB+'B');
-
         }
         
     </script>
