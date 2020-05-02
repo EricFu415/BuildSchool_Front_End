@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Long+Cang&display=swap" rel="stylesheet">
+    <title>AppleCategory</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-family: 'Long Cang', cursive;
+            font-size: 25px;
+        }
+        button {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row d-flex justify-content-center my-4">
+            <img src="pic/AppleLogo.png" alt="Apple Logo" style="width: 100px; height: 115px; margin-right: 30px;">
+            <h1 style="font-size: 80px; font-weight: bold; line-height: 100px;">Apple Category</h1>
+        </div>
+        <div class="row d-flex justify-content-center" id="allBtn">
+            <button class="btn btn-success btn-lg" id="Mac" type="button" onclick="productMac()" style="font-size: 30px;">Mac</button>
+            <button class="btn btn-success btn-lg" id="iPad" type="button" onclick="productiPad()" style="font-size: 30px;">iPad</button>
+            <button class="btn btn-success btn-lg" id="iPhone" type="button" onclick="productiPhone()" style="font-size: 30px;">iPhone</button>
+            <button class="btn btn-success btn-lg" id="iWatch" type="button" onclick="productiWatch()" style="font-size: 30px;">iWatch</button>
+        </div>
+        <div class="row d-flex my-5">
+            <div>
+                <img src="" alt="" class="img-fluid" id="AppleProductImg">
+            </div>
+            <div class="mx-5" id="info">
+                <div id="color"></div>
+                <div id="capacity"></div>
+                <div id="price"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var products = {
+            Mac: {
+                appearance: [
+                    { colorName: "灰", color: "#696969", src: "pic/Mac_gray.jpg" },
+                    { colorName: "金", color: "#FFE5B4", src: "pic/Mac_gold.jpg" },
+                    { colorName: "銀", color: "#C0C0C0", src: "pic/Mac_silver.jpg" }
+                ],
+                specification: [
+                    { capacity: '256GB', price: '$31,900' },
+                    { capacity: '512GB', price: '$41,900' }
+                ],
+                other:{
+                    productName: Mac,
+                    showphoto: 'pic/Mac_silver.jpg',
+                }
+            },
+            iPad: {
+                appearance: [
+                    { id: "iPad_1", colorName: "灰", color: "#696969", src: "pic/ipad-gray.png" },
+                    { id: "iPad_2", colorName: "金", color: "#FFE5B4", src: "pic/ipad-gold.png" },
+                    { id: "iPad_3", colorName: "銀", color: "#C0C0C0", src: "pic/ipad-silver.png" }
+                ],
+                specification:[
+                    { capacity: '128GB' , price: '$25,900' },
+                    { capacity: '256GB' , price: '$29,400' },
+                    { capacity: '512GB' , price: '$36,400' },
+                    { capacity: '1TB' , price: '$43,400' }
+                ],
+                other:{
+                    productName: iPad,
+                    showphoto: 'pic/iPad-all.jfif',
+                }
+            },
+            iPhone: {
+                appearance: [
+                    { id: "iPhone_1", colorName: "白", color: "#fff", src: "pic/iPhone_white.png" },
+                    { id: "iPhone_2", colorName: "黑", color: "#000", src: "pic/iPhone_black.png" },
+                    { id: "iPhone_3", colorName: "綠", color: "#7FFFD4", src: "pic/iPhone_green.png" },
+                    { id: "iPhone_1", colorName: "黃", color: "#FFFF00", src: "pic/iPhone_yellow.png" },
+                    { id: "iPhone_2", colorName: "紫", color: "#B399FF", src: "pic/iPhone_purple.png" },
+                    { id: "iPhone_3", colorName: "紅", color: "#E60000", src: "pic/iPhone_red.png" }
+                ],
+                specification:[
+                    { capacity: '64GB' , price: '$24,900' },
+                    { capacity: '128GB' , price: '$26,900' },
+                    { capacity: '256GB' , price: '$30,400' }
+                ],
+                other:{
+                    productName: iPhone,
+                    showphoto: 'pic/iPhone_all.jpg',
+                }
+            },
+            iWatch: {
+                appearance: [
+                    { id: "iWatch_1", colorName: "灰", color: "#696969", src: "pic/iWatch_gray.png" },
+                    { id: "iWatch_2", colorName: "金", color: "#FFE5B4", src: "pic/iWatch_gold.png" },
+                    { id: "iWatch_3", colorName: "白", color: "#fff", src: "pic/iWatch_white.png" }
+                ],
+                specification:[
+                    { capacity: '40mm' , price: '$13,400' },
+                    { capacity: '44mm' , price: '$14,400' }
+                ],
+                other:{
+                    productName: iWatch,
+                    showphoto: 'pic/iWatch_white.png',
+                }
+            }
+        }
+        var macbtn = document.getElementById('Mac');
+        var ipadbtn = document.getElementById('iPad');
+        var iphonebtn = document.getElementById('iPhone');
+        var iwatchbtn = document.getElementById('iWatch');
+        var appleproductimg = document.getElementById('AppleProductImg');
+        var info = document.getElementById('info');
+
+        function productMac(){
+            info.innerHTML = '';
+            appleproductimg.setAttribute('src', products.Mac.other.showphoto);
+            appleproductimg.style.maxWidth = '400px';
+            // let titleofcolordiv = document.createElement('div');
+            // let titleofcolorh3 = document.createElement('h3');
+            // titleofcolorh3.innerHTML = '顏色'
+            // titleofcolordiv.classList.add('w-100','d-flex','justify-content-center','justify-content-md-start');
+            // titleofcolordiv.appendChild(titleofcolorh3);
+            // info.appendChild(titleofcolordiv);
+            // for (let item of products.Mac.appearance){
+            //     let colordiv = document.createElement('div');
+            //     let colorbtn = document.createElement('btn');
+            //     let colorbtndiv = document.createElement('div');
+            //     let coloricon = document.createElement('i');
+            //     let colorspan = document.createElement('span');
+
+            //     colordiv.classList.add('d-flex','col-6','col-md-4');
+            //     colorbtn.classList.add('showcolor','btn','btn-outline-sucess','mb-3','w-100');
+            //     colorbtn.setAttribute('src', item.src);
+
+            //     colorbtndiv.classList.add('d-flex','flex-column','justify-content-center','align-items-center','p-5');
+            //     coloricon.classList.add('fas','fa-circle');
+            //     coloricon.style.fontSize = '25px';
+            //     coloricon.style.color = item.color;
+
+            //     colorspan.innerText = item.colorName;
+            //     colorbtndiv.appendChild(coloricon);
+            //     colorbtndiv.appendChild(colorspan);
+            //     colorbtn.appendChild(colorbtndiv);
+            //     colordiv.appendChild(colorbtn);
+            //     info.appendChild(colordiv);
+            // }
+        }
+        function productiPad(){
+            info.innerHTML = '';
+            appleproductimg.setAttribute('src', products.iPad.other.showphoto);
+            appleproductimg.style.maxWidth = '300px';
+            let titleofcolordiv = document.createElement('div');
+            let titleofcolorh1 = document.createElement('h1');
+            titleofcolorh1.innerHTML = '顏色'
+            titleofcolordiv.classList.add('w-100','d-flex','justify-content-center','justify-content-md-start');
+            titleofcolordiv.appendChild(titleofcolorh1);
+            info.appendChild(titleofcolordiv);
+        }
+        function productiPhone(){
+            info.innerHTML = '';
+            appleproductimg.setAttribute('src', products.iPhone.other.showphoto);
+            appleproductimg.style.maxWidth = '400px';
+            let titleofcolordiv = document.createElement('div');
+            let titleofcolorh1 = document.createElement('h1');
+            titleofcolorh1.innerHTML = '顏色'
+            titleofcolordiv.classList.add('w-100','d-flex','justify-content-center','justify-content-md-start');
+            titleofcolordiv.appendChild(titleofcolorh1);
+            info.appendChild(titleofcolordiv);
+        }
+        function productiWatch(){
+            info.innerHTML = '';
+            appleproductimg.setAttribute('src', products.iWatch.other.showphoto);
+            appleproductimg.style.maxWidth = '400px';
+            let titleofcolordiv = document.createElement('div');
+            let titleofcolorh1 = document.createElement('h1');
+            titleofcolorh1.innerHTML = '顏色'
+            titleofcolordiv.classList.add('w-100','d-flex','justify-content-center','justify-content-md-start');
+            titleofcolordiv.appendChild(titleofcolorh1);
+            info.appendChild(titleofcolordiv);
+        }
+
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
