@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/437be08d6c.js" crossorigin="anonymous"></script>
+    <link href="Modules/MyHelper.js">
+    <link href="https://fonts.googleapis.com/css2?family=Long+Cang&display=swap" rel="stylesheet">
+</head>
+<style type="text/css">
+    * {
+        font-family: 'Long Cang', cursive;
+        font-size: 25px;
+    }
+
+    .YearAndMonthAndB2 {
+        font-size: 40px;
+        display: flex;
+        justify-content: space-between;
+
+    }
+
+    .YearAndMonth {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .YearAndMonth span {
+        font-size: 50px;
+    }
+
+    th {
+        width: 200px;
+        height: 100px;
+        text-align: center;
+    }
+
+    td {
+        width: 200px;
+        height: 100px;
+
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="YearAndMonthAndB2">
+                    <button class="btn btn-light btn-lg" type="submit" onclick="btnSubtract()"><i
+                            class="fas fa-chevron-left"></i></button>
+                    <div class="YearAndMonth">
+                        <span class="Year">2020年</span>
+                        <span class="Month"></span>
+                    </div>
+                    <button class="btn btn-light btn-lg" type="submit" onclick="btnPlus()"><i
+                            class="fas fa-chevron-right"></i></button>
+                </div>
+                <table border="2">
+                    <thead>
+                        <tr>
+                            <th>日</th>
+                            <th>一</th>
+                            <th>二</th>
+                            <th>三</th>
+                            <th>四</th>
+                            <th>五</th>
+                            <th>六</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- 建模板 -->
+    <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">新增行程</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">行程標題</span>
+                        </div>
+                        <input type="text" class="form-control" id="title_input" aria-label="Default"
+                            aria-describedby="inputGroup-sizing-default">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">詳細說明</span>
+                        </div>
+                        <textarea name="" id="details_input" cols="30" rows="10"></textarea>
+                    </div>
+                    <!-- <label>詳細說明<textarea></textarea></label> -->
+
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button> -->
+                    <button type="button" class="btn btn-primary" onclick="save_update()">儲存行程</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        //做固定的畫面
+        //把這個月長出來(4月)
+        //1.現在的時間(2020/04/22)
+        //2.4月有幾天
+        //3.4月的第一天是禮拜幾
+        //做代辦事項功能
+        //LocalStorage
+        //設計你的資料結構
+        //
+        var year = document.getElementsByClassName('Year')[0];
+        var month = document.getElementsByClassName('Month')[0];
+        var getyear = new Date().getFullYear();
+        var getmonth = new Date().getMonth();
+
+        const monthName = ["January", "Febrary", "March", "April", "May", "June", "July", "Auguest", "September", "October", "November", "December"];
+        month.innerText = monthName[getmonth]
+
+        function btnPlus() {
+            if (getmonth == 11) {
+                getyear++;
+                year.innerText = `${getyear}年`;
+                getmonth = 0;
+                month.innerText = monthName[getmonth];
+            }
+            else {
+                getmonth++;
+                month.innerText = monthName[getmonth];
+            }
+            getweek = new Date(getyear, getmonth, 1).getDay();
+            getdays = new Date(getyear, getmonth + 1, 0).getDate();
+            cleardays();
+            pushdays();
+        }
+
+        function btnSubtract() {
+            if (getmonth == 0) {
+                getyear--;
+                year.innerHTML = `${getyear}年`;
+                getmonth = 11;
+                month.innerText = monthName[getmonth];
+            }
+            else {
+                getmonth--;
+                month.innerText = monthName[getmonth];
+            }
+            getweek = new Date(getyear, getmonth, 1).getDay();
+            getdays = new Date(getyear, getmonth + 1, 0).getDate();
+            cleardays();
+            pushdays();
+        }
+
+        var getweek = new Date(getyear, getmonth, 1).getDay();
+        var getdays = new Date(getyear, getmonth + 1, 0).getDate();
+        var totd = document.querySelectorAll('td');
+
+        function pushdays() {
+            cleardays();
+            for (let i = 1; i <= getdays; i++) {
+                //debugger;
+                totd[getweek].innerText = i;
+                totd[getweek].setAttribute('date', `${getyear},${getmonth},${i}`)
+                totd[getweek].onclick = function () {
+                    // debugger;
+                    clickday = this.textContent;
+                    $('#update').modal('show')
+                }
+                
+                if (localStorage.getItem(Key) != null) {
+                    
+                }
+
+                getweek++;
+            }
+            getweek = new Date(getyear, getmonth, 1).getDay();
+
+        }
+
+        function cleardays() {
+            for (let i = 0; i < totd.length; i++) {
+                totd[i].innerHTML = '';
+                totd[i].removeAttribute('date');
+                totd[i].onclick = null;
+
+            }
+        }
+        pushdays();
+
+        var clickday;
+
+        function save_update() {
+            var title_input = document.getElementById('title_input').value;
+            var details_input = document.getElementById('details_input').value;
+            var itinerary = [{ 'title': title_input, 'details': details_input }];
+
+            var parse_input = JSON.stringify(itinerary);
+            localStorage.setItem(`${getyear},${getmonth},${clickday}`, parse_input);
+
+            cleardays();
+            pushdays();
+        }
+
+    </script>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
