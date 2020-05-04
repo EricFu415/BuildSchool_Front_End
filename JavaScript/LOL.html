@@ -10,17 +10,20 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet"> -->
+        <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
     <style>
         *{
-            font-family: 'Noto Sans TC', sans-serif;
+            /* font-family: 'Noto Sans TC', sans-serif; */
             text-align: center;
+            font-family: 'ZCOOL KuaiLe','Noto Sans TC', sans-serif;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container my-5">
         <div class="row">
             
         </div>
@@ -34,15 +37,17 @@
                 <h5 class="card-title"></h5>
                 <p class="card-text"></p>
                 <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Click!</button>
-
+                <!-- data-target會呼叫到要展開的Modal的id -->
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"><span style="line-height: 30px;">Detail</span><img src="click.png" alt="!" style="width: 30px;height: 30px;"></button>
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
+                                <!-- 點擊後Modal的title -->
                                 <h4 class="modal-title" id="exampleModalLabel">Modal title</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -50,6 +55,9 @@
                             </div>
                             <div class="modal-body">
                                 <p class="modelp"></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-info" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
@@ -62,33 +70,43 @@
         function Cardpush(array){
             let template = document.getElementById('template');
             for(let i = 0; i < array.length ; i++){
-                let btn_id = "#call" + i ;
-                let div_id = "call" + i ;
+                //複製模板temoplate的節點
                 let cloneContent = template.content.cloneNode(true);
-                let h5 = cloneContent.querySelector('h5');
                 let img = cloneContent.querySelector('img');
+                let h5 = cloneContent.querySelector('h5');
                 let p = cloneContent.querySelector('p');
-                let h4 = cloneContent.querySelector('h4');
+
                 let button = cloneContent.querySelector('button');
                 let div = cloneContent.querySelector('.fade');
-                let text = cloneContent.querySelector('.modal-body');
+                let h4 = cloneContent.querySelector('h4');
                 let modelp = cloneContent.querySelector('.modelp');
 
-                button.setAttribute('data-target', btn_id);
+                //用for迴圈創建每個呼叫Modal的button的data-target
+                let btn_datatarget = "#call" + i ;
+                //用for迴圈創建每個被button呼叫的Modal的id
+                let div_id = "call" + i ;
+                //把創建的button的data-target新增屬性給button
+                button.setAttribute('data-target', btn_datatarget);
+                //把創建的Modal的id新增屬性給div
                 div.setAttribute('id', div_id);
 
-                h5.textContent = array[i].name;
-                h4.textContent = array[i].name;
-                p.textContent = `價格：${array[i].price}`;
-
-                modelp.innerHTML = `Name:${array[i].name}<br> Price:${array[i].price}<br> Info:${array[i].info}`;
+                //把圖片新增src屬性給img
                 img.setAttribute('src', array[i].img);
-                
+
+                h5.textContent = array[i].name;
+                h5.style.fontSize = '25px';
+                p.textContent = `價格：${array[i].price}`;
+                p.style.fontSize = '18px';
+
+                h4.textContent = array[i].name;
+                h4.style.fontSize = '30px';
+                modelp.innerHTML = `Name:${array[i].name}<br> Price:${array[i].price}<br> Information:<br>${array[i].info}`;
+                modelp.style.fontSize = '20px';
+
+                //再把複製的每個節點放到row裡面
                 row.appendChild(cloneContent);
             }
         }
-        
-        
 
         let LOL = [];
         window.onload = function () {
@@ -96,7 +114,7 @@
             xhr.onload = function () {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     LOLArray = JSON.parse(this.responseText);
-                    debugger;
+                    debugger; //去看LOLArray要怎麼找到我們要的資料
                     LOLArray.feed.entry.forEach((item) => {
                         LOL.push({
                             name: item.gsx$name.$t,

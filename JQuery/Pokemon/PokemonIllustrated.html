@@ -45,14 +45,13 @@
         // 圖片索引
         var index = 1; 
 
-        // var logo = document.getElementById('logo');
         var block = document.getElementById('block');
 
         window.onload = appendPokemon();
         function appendPokemon() {
             // 創建img
             let img = document.createElement('img');
-            // 把每張img加上屬性
+            // 把每張img加上src屬性
             img.setAttribute('src', 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png');
             // 把每張img加上click的監聽事件
             img.addEventListener('click', removeImg);
